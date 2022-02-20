@@ -11,8 +11,9 @@ import firebase from '~/plugins/firebase'
 export default {
   methods: {
     login() {
-      const provider = new firebase.auth.GoogleAuthProvider()
-      firebase.auth().signInWithRedirect(provider)
+      console.log('login');
+      const provider = new firebase.auth.GoogleAuthProvider();
+      firebase.auth().signInWithRedirect(provider);
     }
   }
 };

@@ -11,11 +11,19 @@ import firebase from '~/plugins/firebase'
 export default {
   methods: {
     login() {
-      const provider = new firebase.auth.GoogleAuthProvider()
-      firebase.auth().signInWithRedirect(provider)
-      this.$router.replace('/confirm')
+      var provider = new firebase.auth.GoogleAuthProvider();
+      firebase.auth().languageCode = "ja";
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then(() => {
+          this.$router.push("/confirm");
+        })
+        .catch(error => {
+          alert("認証に失敗しました")
+        });
     }
-  }
+  },
 };
 </script>
 
